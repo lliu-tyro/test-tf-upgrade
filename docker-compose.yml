@@ -3,8 +3,6 @@ services:
   plan:
     image: hashicorp/terraform:0.11.13
     network_mode: host
-    ports:
-      - 3306:3306
     volumes:
       - .:/workdir
     working_dir: /workdir
@@ -14,8 +12,6 @@ services:
   apply:
     image: hashicorp/terraform:0.11.13
     network_mode: host
-    ports:
-      - 3306:3306
     volumes:
       - .:/workdir
     working_dir: /workdir
