@@ -1,10 +1,8 @@
 version: "3"
 services:
   plan:
-    image: hashicorp/terraform:0.11.13
+    image: hashicorp/terraform:0.12.0
     network_mode: host
-    ports:
-      - 3306:3306
     volumes:
       - .:/workdir
     working_dir: /workdir
@@ -12,10 +10,8 @@ services:
     command: -c "scripts/plan.sh"
 
   apply:
-    image: hashicorp/terraform:0.11.13
+    image: hashicorp/terraform:0.12.0
     network_mode: host
-    ports:
-      - 3306:3306
     volumes:
       - .:/workdir
     working_dir: /workdir
