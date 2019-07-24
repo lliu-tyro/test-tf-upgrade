@@ -15,7 +15,10 @@ resource "mysql_user" "test_user" {
   user               = "test_user"
   host               = "%"
   plaintext_password = "password"
-  tls_option         = ""
+
+  lifecycle {
+    ignore_changes = ["tls_option"]
+  }
 }
 
 resource "mysql_grant" "test_user_grant" {
@@ -23,6 +26,8 @@ resource "mysql_grant" "test_user_grant" {
   host       = "${mysql_user.test_user.host}"
   database   = "${mysql_database.test_db.name}"
   privileges = ["SELECT", "INSERT", "UPDATE", "DELETE", "CREATE", "DROP", "ALTER"]
-  table      = ""
-  tls_option = ""
+
+  lifecycle {
+    ignore_changes = ["tls_option", "table"]
+  }
 }
